@@ -1,6 +1,6 @@
 # sharepointDevelopment
 for sharepoint development
-# Azure screen shorts for Create sharepoint server 2019
+# screen shorts for Create sharepoint server 2019
 
 Best Link for Adding Active directory for windows server :
 
