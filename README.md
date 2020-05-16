@@ -16,6 +16,10 @@ https://www.youtube.com/watch?v=G_k5D-o7CrI
 
 https://www.youtube.com/watch?v=eTzHH8CQX_8
 
+azure setup for VPN
+
+https://www.youtube.com/watch?v=7AAqhsNJWkw
+
 screenshort 1 :
 ![](images/Screenshot%202020-05-15%20at%205.50.09%20PM.png)
 
