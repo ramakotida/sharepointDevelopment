@@ -10,6 +10,11 @@ download Latest sql server 2019
 
 download latest sharepoint 2019
 
+VPN Setup for windows server link:
+
+https://www.youtube.com/watch?v=G_k5D-o7CrI
+
+https://www.youtube.com/watch?v=eTzHH8CQX_8
 
 screenshort 1 :
 ![](images/Screenshot%202020-05-15%20at%205.50.09%20PM.png)
