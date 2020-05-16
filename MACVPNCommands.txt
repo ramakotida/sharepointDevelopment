@@ -1,0 +1,219 @@
+Viswanaths-Mac-mini:Downloads dalabs$ cd azure-vpn-point2site-master
+Viswanaths-Mac-mini:azure-vpn-point2site-master dalabs$ ls
+README.md	linux		mac
+Viswanaths-Mac-mini:azure-vpn-point2site-master dalabs$ cd mac
+Viswanaths-Mac-mini:mac dalabs$ mv ˜/Downloads/
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	3_createCsr.sh		5_removeSpaces.sh
+2_convertP12ToKey.sh	4_createCert.sh
+Viswanaths-Mac-mini:mac dalabs$ mv ˜/Downloads/vuggiedemo.p12
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Viswanaths-Mac-mini:mac dalabs$ mv ˜/Downloads/vuggiedemo.p12 .
+mv: rename ˜/Downloads/vuggiedemo.p12 to ./vuggiedemo.p12: No such file or directory
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	3_createCsr.sh		5_removeSpaces.sh
+2_convertP12ToKey.sh	4_createCert.sh
+Viswanaths-Mac-mini:mac dalabs$ clear
+
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	3_createCsr.sh		5_removeSpaces.sh
+2_convertP12ToKey.sh	4_createCert.sh
+Viswanaths-Mac-mini:mac dalabs$ ./1_createPrivateKey.sh
+This needs to be exported by the Keychain...after you creted your own CA, this will create a public/private keypair....export the private key
+Viswanaths-Mac-mini:mac dalabs$ ./1_convertP12ToKey.sh
+-bash: ./1_convertP12ToKey.sh: No such file or directory
+Viswanaths-Mac-mini:mac dalabs$ ./2_convertP12ToKey.sh
+Exporting the private key from keychain will give you a p12 file, for the CSR you need a .key file...this is how you convert it: 
+openssl pkcs12 -in rootkey.p12 -nodes -out rootkey.key -nocerts
+Viswanaths-Mac-mini:mac dalabs$ openssl pkcs12 -in devtesting-ip.p12 -nodes -out devtesting-ip.key -nocerts
+Error opening input file devtesting-ip.p12
+devtesting-ip.p12: No such file or directory
+Viswanaths-Mac-mini:mac dalabs$ openssl pkcs12 -in devtesting-ip.p12 -nodes -out devtesting-ip.key -nocerts
+Error opening input file devtesting-ip.p12
+devtesting-ip.p12: No such file or directory
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	3_createCsr.sh		5_removeSpaces.sh
+2_convertP12ToKey.sh	4_createCert.sh
+Viswanaths-Mac-mini:mac dalabs$ open
+Usage: open [-e] [-t] [-f] [-W] [-R] [-n] [-g] [-h] [-s <partial SDK name>][-b <bundle identifier>] [-a <application>] [filenames] [--args arguments]
+Help: Open opens files from a shell.
+      By default, opens each file using the default application for that file.  
+      If the file is in the form of a URL, the file will be opened as a URL.
+Options: 
+      -a                Opens with the specified application.
+      -b                Opens with the specified application bundle identifier.
+      -e                Opens with TextEdit.
+      -t                Opens with default text editor.
+      -f                Reads input from standard input and opens with TextEdit.
+      -F  --fresh       Launches the app fresh, that is, without restoring windows. Saved persistent state is lost, excluding Untitled documents.
+      -R, --reveal      Selects in the Finder instead of opening.
+      -W, --wait-apps   Blocks until the used applications are closed (even if they were already running).
+          --args        All remaining arguments are passed in argv to the application's main() function instead of opened.
+      -n, --new         Open a new instance of the application even if one is already running.
+      -j, --hide        Launches the app hidden.
+      -g, --background  Does not bring the application to the foreground.
+      -h, --header      Searches header file locations for headers matching the given filenames, and opens them.
+      -s                For -h, the SDK to use; if supplied, only SDKs whose names contain the argument value are searched.
+                        Otherwise the highest versioned SDK in each platform is used.
+Viswanaths-Mac-mini:mac dalabs$ open .
+Viswanaths-Mac-mini:mac dalabs$ openssl pkcs12 -in devtesting-ip.p12 -nodes -out devtesting-ip.key -nocerts
+Enter Import Password:
+MAC verified OK
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	4_createCert.sh		devtesting-ip.p12
+2_convertP12ToKey.sh	5_removeSpaces.sh
+3_createCsr.sh		devtesting-ip.key
+Viswanaths-Mac-mini:mac dalabs$ clear
+
+Viswanaths-Mac-mini:mac dalabs$ cat 3_crateCar.sh
+cat: 3_crateCar.sh: No such file or directory
+Viswanaths-Mac-mini:mac dalabs$ 
+Viswanaths-Mac-mini:mac dalabs$ cat 3_createCsr.sh
+# Generate CSR
+openssl req -new -key rootkey.key -out rootkey-server.csr
+Viswanaths-Mac-mini:mac dalabs$ openssl req -new -key devtesting-ip.key -out devtesting-ip.csr
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) []:US
+State or Province Name (full name) []:narasimha
+Locality Name (eg, city) []:kokapet
+Organization Name (eg, company) []:Microsoft
+Organizational Unit Name (eg, section) []:IT
+Common Name (eg, fully qualified host name) []:devtesting-ip.microsoft.com
+Email Address []:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:Imi@123456789
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	3_createCsr.sh		5_removeSpaces.sh	devtesting-ip.key
+2_convertP12ToKey.sh	4_createCert.sh		devtesting-ip.csr	devtesting-ip.p12
+Viswanaths-Mac-mini:mac dalabs$ cat 4_createCert.sh
+# Generate Certificate
+openssl x509 -req -days 3650 -in rootkey-server.csr -signkey rootkey.key -out rootkey-server.crt
+
+
+Viswanaths-Mac-mini:mac dalabs$ openssl x509 -req -days 3650 -in devtesting-ip.csr -signkey devtesting-ip.key -out devtesting-ip.crt
+Signature ok
+subject=/C=US/ST=narasimha/L=kokapet/O=Microsoft/OU=IT/CN=devtesting-ip.microsoft.com
+Getting Private key
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	4_createCert.sh		devtesting-ip.csr
+2_convertP12ToKey.sh	5_removeSpaces.sh	devtesting-ip.key
+3_createCsr.sh		devtesting-ip.crt	devtesting-ip.p12
+Viswanaths-Mac-mini:mac dalabs$ cat devtesting-ip.crt
+-----BEGIN CERTIFICATE-----
+MIIDcDCCAlgCCQCcJ1Pf7rliHTANBgkqhkiG9w0BAQUFADB6MQswCQYDVQQGEwJV
+UzESMBAGA1UECAwJbmFyYXNpbWhhMRAwDgYDVQQHDAdrb2thcGV0MRIwEAYDVQQK
+DAlNaWNyb3NvZnQxCzAJBgNVBAsMAklUMSQwIgYDVQQDDBtkZXZ0ZXN0aW5nLWlw
+Lm1pY3Jvc29mdC5jb20wHhcNMjAwNTE2MDgzMzA1WhcNMzAwNTE0MDgzMzA1WjB6
+MQswCQYDVQQGEwJVUzESMBAGA1UECAwJbmFyYXNpbWhhMRAwDgYDVQQHDAdrb2th
+cGV0MRIwEAYDVQQKDAlNaWNyb3NvZnQxCzAJBgNVBAsMAklUMSQwIgYDVQQDDBtk
+ZXZ0ZXN0aW5nLWlwLm1pY3Jvc29mdC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IB
+DwAwggEKAoIBAQCbgiyH2UT3vGf2xTuj+felL3LgAN7LV3xhvqTBk0aZV0As57hU
+ThtJYSyM790xFnkueh6WcgyEMC9ouZH84tANgeuYBrPjiixivliFoQvTPD4xcnHc
+2I+fOY/9WlcuCx67roPQ61DutoVBri7UoOoz/iS9A6egIIm/Oux6yUMsS1mEfpjn
+4EGso/vHoKlzD6iM0zfzultPX1QyX4gRQNurFw7VSiQ5fVwEGi8ueVqCz0aKwGbm
+2o9j6XYI8QF3uDZ8NhOqNNjkHvLqgG08Uo4QxbKozDhSL2JapIFKOTDbxlJ15Omk
+KJM+pGHBmryCHo480B0ajCquUOgD1xDUcFERAgMBAAEwDQYJKoZIhvcNAQEFBQAD
+ggEBADZQSY5cen7/ViqfEI5gu30yDKWFqpXPBoNEIpWHsWYWIU/fT3Pn61u/z4lF
+Y59npPcWle/lXAxL4iRq+KxO2mOQ5pBvwWnR4fwC6uyzpFQchxiyjTeOVqYC8H32
+7JtHk2HWEhBQiZIoI6UvtY1XTMrQH+uFYP/DZT2RLJvGc/ioyy/hch6FMfgTasDr
+wbxX8UtlXC61c5cX5GXeKqxMaMgVzpBzVgC1ntSiS3c0ke3+4TiQ5HcG3sk8Kexj
+k/6sIV/yDuID8cjLllUgR/amBbyBK1QVv8HZyjABsZfQWCVq2i75Jai6QhWIySly
+EJ2A2TTLwoeWxJq+sl1eRUpyggU=
+-----END CERTIFICATE-----
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh	4_createCert.sh		devtesting-ip.csr
+2_convertP12ToKey.sh	5_removeSpaces.sh	devtesting-ip.key
+3_createCsr.sh		devtesting-ip.crt	devtesting-ip.p12
+Viswanaths-Mac-mini:mac dalabs$ ./5_removeSpaces.sh
+Filename where CRT is: 
+devtesting-ip.crt
+Now copy this Cert into your Azure VPN Gateway config...and download the client based on this Cert
+Then add this new downloaded client cert to your Keychain
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh		5_removeSpaces.sh		devtesting-ip.key
+2_convertP12ToKey.sh		devtesting-ip.crt		devtesting-ip.p12
+3_createCsr.sh			devtesting-ip.crt-nospaces.crt
+4_createCert.sh			devtesting-ip.csr
+Viswanaths-Mac-mini:mac dalabs$ open devtesting-ip.crt
+Viswanaths-Mac-mini:mac dalabs$ cat devtesting-ip.crt-nospaces.crt
+MIIDcDCCAlgCCQCcJ1Pf7rliHTANBgkqhkiG9w0BAQUFADB6MQswCQYDVQQGEwJVUzESMBAGA1UECAwJbmFyYXNpbWhhMRAwDgYDVQQHDAdrb2thcGV0MRIwEAYDVQQKDAlNaWNyb3NvZnQxCzAJBgNVBAsMAklUMSQwIgYDVQQDDBtkZXZ0ZXN0aW5nLWlwLm1pY3Jvc29mdC5jb20wHhcNMjAwNTE2MDgzMzA1WhcNMzAwNTE0MDgzMzA1WjB6MQswCQYDVQQGEwJVUzESMBAGA1UECAwJbmFyYXNpbWhhMRAwDgYDVQQHDAdrb2thcGV0MRIwEAYDVQQKDAlNaWNyb3NvZnQxCzAJBgNVBAsMAklUMSQwIgYDVQQDDBtkZXZ0ZXN0aW5nLWlwLm1pY3Jvc29mdC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCbgiyH2UT3vGf2xTuj+felL3LgAN7LV3xhvqTBk0aZV0As57hUThtJYSyM790xFnkueh6WcgyEMC9ouZH84tANgeuYBrPjiixivliFoQvTPD4xcnHc2I+fOY/9WlcuCx67roPQ61DutoVBri7UoOoz/iS9A6egIIm/Oux6yUMsS1mEfpjn4EGso/vHoKlzD6iM0zfzultPX1QyX4gRQNurFw7VSiQ5fVwEGi8ueVqCz0aKwGbm2o9j6XYI8QF3uDZ8NhOqNNjkHvLqgG08Uo4QxbKozDhSL2JapIFKOTDbxlJ15OmkKJM+pGHBmryCHo480B0ajCquUOgD1xDUcFERAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBADZQSY5cen7/ViqfEI5gu30yDKWFqpXPBoNEIpWHsWYWIU/fT3Pn61u/z4lFY59npPcWle/lXAxL4iRq+KxO2mOQ5pBvwWnR4fwC6uyzpFQchxiyjTeOVqYC8H327JtHk2HWEhBQiZIoI6UvtY1XTMrQH+uFYP/DZT2RLJvGc/ioyy/hch6FMfgTasDrwbxX8UtlXC61c5cX5GXeKqxMaMgVzpBzVgC1ntSiS3c0ke3+4TiQ5HcG3sk8Kexjk/6sIV/yDuID8cjLllUgR/amBbyBK1QVv8HZyjABsZfQWCVq2i75Jai6QhWIySlyEJ2A2TTLwoeWxJq+sl1eRUpyggU=Viswanaths-Mac-mini:mac dalabs$ mv ˜/Downloads
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh		5_removeSpaces.sh		devtesting-ip.key
+2_convertP12ToKey.sh		devtesting-ip.crt		devtesting-ip.p12
+3_createCsr.sh			devtesting-ip.crt-nospaces.crt
+4_createCert.sh			devtesting-ip.csr
+Viswanaths-Mac-mini:mac dalabs$ mv ˜/Downloads/
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Viswanaths-Mac-mini:mac dalabs$ mv -/Downloads/
+mv: illegal option -- /
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh		5_removeSpaces.sh		devtesting-ip.key
+2_convertP12ToKey.sh		devtesting-ip.crt		devtesting-ip.p12
+3_createCsr.sh			devtesting-ip.crt-nospaces.crt
+4_createCert.sh			devtesting-ip.csr
+Viswanaths-Mac-mini:mac dalabs$ open .
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh		5_removeSpaces.sh		devtesting-ip.key
+2_convertP12ToKey.sh		devtesting-ip.crt		devtesting-ip.p12
+3_createCsr.sh			devtesting-ip.crt-nospaces.crt	narasimha_VNG
+4_createCert.sh			devtesting-ip.csr
+Viswanaths-Mac-mini:mac dalabs$ cd narasimha_VNG
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ ls
+AzureVPN\azurevpnconfig.xml	Generic\VpnSettings.xml
+Generic\VpnServerRoot.cer	OpenVPN\vpnconfig.ovpn
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd generic
+-bash: cd: generic: No such file or directory
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ ls
+AzureVPN\azurevpnconfig.xml	Generic\VpnSettings.xml
+Generic\VpnServerRoot.cer	OpenVPN\vpnconfig.ovpn
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd Generic
+-bash: cd: Generic: No such file or directory
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ ls
+AzureVPN\azurevpnconfig.xml	Generic\VpnSettings.xml
+Generic\VpnServerRoot.cer	OpenVPN\vpnconfig.ovpn
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd Generic
+-bash: cd: Generic: No such file or directory
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ 
+  [Restored 16-May-2020 at 3:38:24 PM]
+Last login: Sat May 16 15:38:04 on console
+-bash: /Users/dalabs/.profile: No such file or directory
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ ls
+AzureVPN\azurevpnconfig.xml	Generic\VpnSettings.xml
+Generic\VpnServerRoot.cer	OpenVPN\vpnconfig.ovpn
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd..
+-bash: cd..: command not found
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ ls
+AzureVPN\azurevpnconfig.xml	Generic\VpnSettings.xml
+Generic\VpnServerRoot.cer	OpenVPN\vpnconfig.ovpn
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd mac
+-bash: cd: mac: No such file or directory
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd..
+-bash: cd..: command not found
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd -
+-bash: cd: OLDPWD not set
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd ˜
+-bash: cd: ˜: No such file or directory
+Viswanaths-Mac-mini:narasimha_VNG dalabs$ cd ..
+Viswanaths-Mac-mini:mac dalabs$ ls
+1_createPrivateKey.sh		5_removeSpaces.sh		devtesting-ip.key
+2_convertP12ToKey.sh		devtesting-ip.crt		devtesting-ip.p12
+3_createCsr.sh			devtesting-ip.crt-nospaces.crt	narasimha_VNG
+4_createCert.sh			devtesting-ip.csr
+Viswanaths-Mac-mini:mac dalabs$ cd/
+
