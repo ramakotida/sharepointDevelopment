@@ -20,6 +20,11 @@ azure setup for VPN
 
 https://www.youtube.com/watch?v=7AAqhsNJWkw
 
+azure setup for VPN 
+Azure Basic Setup and Site to Point VPN Setup with Radius Authentication.
+
+https://www.youtube.com/watch?v=mpBxkgtjGfE
+
 screenshort 1 :
 ![](images/Screenshot%202020-05-15%20at%205.50.09%20PM.png)
 
