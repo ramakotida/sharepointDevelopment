@@ -37,3 +37,7 @@ screenshort 3 Admin Portal:
 
 screenshort 4 Client Portal:
 ![](images/Screenshot%202020-05-15%20at%206.42.57%20PM.png)
+
+ENable ananymous access youtube link for public access
+
+https://www.youtube.com/watch?v=s9tigJk95fo
