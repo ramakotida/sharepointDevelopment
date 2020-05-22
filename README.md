@@ -2,11 +2,11 @@
 
 $Path = $env:TEMP; $Installer = "chrome_installer.exe"; Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.exe" -OutFile $Path\$Installer; Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait; Remove-Item $Path\$Installer
 
-
 # sharepointDevelopment
 for sharepoint development
 # screen shorts for Create sharepoint server 2019
 
+setup process: all are 2019 setups from microsoft 
 Best Link for Adding Active directory & DNS server for windows server :
 
 https://www.youtube.com/watch?v=h3sxduUt5a8
@@ -14,6 +14,8 @@ https://www.youtube.com/watch?v=h3sxduUt5a8
 download Latest sql server 2019
 
 download latest sharepoint 2019
+
+end of sharepoint setup
 
 VPN Setup for windows server link:
 
