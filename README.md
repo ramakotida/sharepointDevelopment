@@ -13,8 +13,7 @@ https://www.youtube.com/watch?v=h3sxduUt5a8
 
 download Latest sql server 2019
 
-download latest sharepoint 2019
-
+download latest sharepoint 2019   link to watch below link https://www.youtube.com/watch?v=-yYYZWLJ-RU
 end of sharepoint setup
 
 VPN Setup for windows server link:
