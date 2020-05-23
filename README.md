@@ -9,6 +9,12 @@ for sharepoint development
 setup process: all are 2019 setups from microsoft 
 Best Link for Adding Active directory & DNS server for windows server :
 
+# shrepoint designer best link for setup workflow manager 2013
+
+https://www.c-sharpcorner.com/article/how-to-enable-sharepoint-2013-workflow-in-sharepoint-designer-2013/
+
+# end
+
 https://www.youtube.com/watch?v=h3sxduUt5a8
 
 download Latest sql server 2019
