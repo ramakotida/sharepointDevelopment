@@ -53,3 +53,8 @@ screenshort 4 Client Portal:
 ENable ananymous access youtube link for public access
 
 https://www.youtube.com/watch?v=s9tigJk95fo
+
+
+IF active direcoty secronization not work use below link for setup in sharepoint
+
+https://www.c-sharpcorner.com/article/install-and-configure-microsoft-identity-manager-2016-sp1-for-sharepoint-2016/
