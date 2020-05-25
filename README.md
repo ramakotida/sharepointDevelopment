@@ -58,3 +58,8 @@ https://www.youtube.com/watch?v=s9tigJk95fo
 IF active direcoty secronization not work use below link for setup in sharepoint
 
 https://www.c-sharpcorner.com/article/install-and-configure-microsoft-identity-manager-2016-sp1-for-sharepoint-2016/
+
+
+# very imported app start configuration missed in workflow I have wasted 2 days for implementation below is ref link
+
+https://docs.microsoft.com/en-us/sharepoint/dev/general-development/create-a-workflow-with-elevated-permissions-by-using-the-sharepoint-workflo
