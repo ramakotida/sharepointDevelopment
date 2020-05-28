@@ -94,3 +94,7 @@ https://docs.microsoft.com/en-us/shar...
 #end flow
 
 # end
+
+# sahrepoint manager app from visual sutdio best link
+https://www.youtube.com/watch?v=xBkikKlOIgE&t=5103s
+# end 
