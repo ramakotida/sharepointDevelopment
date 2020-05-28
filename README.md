@@ -63,3 +63,34 @@ https://www.c-sharpcorner.com/article/install-and-configure-microsoft-identity-m
 # very imported app start configuration missed in workflow I have wasted 2 days for implementation below is ref link
 
 https://docs.microsoft.com/en-us/sharepoint/dev/general-development/create-a-workflow-with-elevated-permissions-by-using-the-sharepoint-workflo
+
+# app configuration for Sharepoint apps administrator
+
+https://www.youtube.com/watch?v=TAkQsEt71ns
+
+Learn how to Setup SharePoint App Catalog in On-Premises and Office 365 SharePoint 
+
+Steps in the Process in On-Premises
+-----------------------------------------------------------
+a) Configure the domain names in DNS
+b) Configure the Subscription Settings and App Management service applications
+c) Specify the app domain and app prefix 
+d) Create new App Catalog site collection
+
+Script for Subscription Settings and App Management service applications
+-----------------------------------------------------------------------
+$msa = Get-SPManagedAccount -Identity publicisgroupe\spadmin
+
+$App = New-SPServiceApplicationPool -Name "AppManagementAppPool" –Account $msa
+
+$Sub = New-SPSubscriptionSettingsServiceApplication -Name "Subscription Settings Service" -ApplicationPool $App
+
+$SubSP = New-SPSubscriptionSettingsServiceApplicationProxy -ServiceApplication $Sub
+
+More info on Site Collection App Catalog
+------------------------------------------------------------------
+https://docs.microsoft.com/en-us/shar...
+
+#end flow
+
+# end
