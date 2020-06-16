@@ -34,7 +34,7 @@ https://<IP>/api/Pipflow/spgetListByName?Listname=<pipflow1>
 # end 
 
 3.
-# Set the sharepont list Item cretion based on TItle and remarks
+# Set the sharepont list Item cretion based on TItle , remarks and listname
 
 https://<IP>/api/Pipflow/spsetFMR?fmrid=<fmrid>&remarks=<remarks>&Listname=<Listname>
   
@@ -53,7 +53,7 @@ https://<IP>/api/Pipflow/spsetFMR?fmrid=<fmrid>&remarks=<remarks>&Listname=<List
   eg url path : http://localhost:56643/api/Pipflow/spsetfmr?fmrid=1.1.1.3&remarks=testindf%20&listname=pipflow1
 # end 
 4.
-# Get the sharepont list Item  based on TItle and remarks
+# Get the sharepont list Item  based on TItle and Item id
 
 https://<IP>api/Pipflow/spgetListItemByID?listname=<pipflow1>&ListitemId=<43>
   
@@ -71,7 +71,7 @@ https://<IP>api/Pipflow/spgetListItemByID?listname=<pipflow1>&ListitemId=<43>
   eg url path : http://localhost:56643/api/Pipflow/spgetListItemByID?listname=pipflow1&ListitemId=43
 # end 
 5.
-# Get the sharepont list Item  based on TItle and remarks
+# Set the sharepont Task list Item   based on status,percentcomplete,comments and taskid
 
 https://<IP>api/Pipflow/spsetTaskItemByID?status=<Approved>&percentComplete=<1>&comments=<how%20r%20ou>&taskid=<449>&createdby=<spm>
   
@@ -90,7 +90,7 @@ https://<IP>api/Pipflow/spsetTaskItemByID?status=<Approved>&percentComplete=<1>&
   eg url path : http://localhost:56643/api/Pipflow/spsetTaskItemByID?status=Approved&percentComplete=1&comments=how%20r%20ou&taskid=449&createdby=spm
 # end 
 6.
-# Get the sharepont list Item  based on TItle and remarks
+# Get the sharepont tasks  based on list and task item id
 
 https://<IP>api/Pipflow/spgetTaskDetailsByuser?listname=<tasklist>&ListitemId=<449>
   
@@ -108,7 +108,7 @@ https://<IP>api/Pipflow/spgetTaskDetailsByuser?listname=<tasklist>&ListitemId=<4
   eg url path : http://localhost:56643/api/Pipflow/spgetTaskDetailsByuser?listname=tasklist&ListitemId=449
 # end 
 7.
-# Get the sharepont list Item  based on TItle and remarks
+# Get the sharepont Tasks list Item  based on TItle and Taskuser
 
 http://<IP>api/Pipflow/spgetTaskDetails?listname=<tasklist>&Taskuser=<user name>
   
