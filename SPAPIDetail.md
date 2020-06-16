@@ -1,3 +1,7 @@
+Note: this API  hosted in http://40.70.16.29:8080/api/Pipflow/spcheckuser?uname=&pwd=pip@123
+
+so replace localhost:56643 with 40.70.16.29:8080
+
 1.
 # Validate user from sharepoint site url
 
