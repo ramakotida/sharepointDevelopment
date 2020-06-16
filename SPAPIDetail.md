@@ -129,3 +129,20 @@ http://<IP>api/Pipflow/spgetTaskDetails?listname=<tasklist>&Taskuser=<user name>
   
   eg url path : http://localhost:56643/api/Pipflow/spgetTaskDetails?listname=tasklist&Taskuser=sdfdf
 # end 
+8.
+# Get user info based on login details 
+https://<IP>/api/Pipflow/spcheckuser?uname=<spm>&pwd=<pip@123>
+  
+  Method type : GET or POST
+  
+  Request parameters:
+             uname: user name
+             pwd : password of the user
+  Response output:
+  
+              success: "{\"title\":\"MD\",\"Id\":\"27\",\"LoginName\":\"i:0#.w|mylabsp\\\\md\",\"Emailid\":null}"
+              fail:  Error message
+Eg link: 
+http://localhost:56643/api/Pipflow/spgetuserinfo?uname=spm&pwd=pip@123
+
+# end 
